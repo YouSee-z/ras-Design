@@ -1,0 +1,23 @@
+{
+  "name": "@rasDesign/login",
+  "version": "2.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "antd": "^4.24.2",
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@rasDesign/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  }
+}
