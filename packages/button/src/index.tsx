@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { test } from "@rasDesign/utils";
-import "./index.module.css";
+import "./index.less";
 
 interface Props {
   className: string;

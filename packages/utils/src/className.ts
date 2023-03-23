@@ -9,6 +9,7 @@ type ClassNamesArg =
   | null
   | boolean;
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (...args: ClassNamesArg[]): string {
   const length = args.length;
   let classNames: string[] = [];
