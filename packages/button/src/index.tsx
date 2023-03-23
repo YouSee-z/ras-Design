@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { test } from "@rasDesign/utils";
+import "./index.css";
 
 interface Props {
   className: string;
@@ -7,10 +8,9 @@ interface Props {
 
 export default function Button({ className }: Props) {
   test();
-  const [open, setopen] = useState(false);
   return (
     <>
-      <div>table</div>
+      <div className="button">table</div>
     </>
   );
 }
