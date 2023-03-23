@@ -7,8 +7,10 @@
       "@rasDesign/table": ["packages/table/src"],
       "@rasDesign/button": ["packages/button/src"],
       "@rasDesign/user-select": ["packages/user-select/src"],
-      "@rasDesign/utils": ["packages/utils/src"]
+      "@rasDesign/utils": ["packages/utils/src"],
+      "@style": ["packages/style/index"]
     },
+
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

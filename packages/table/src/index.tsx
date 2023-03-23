@@ -5,7 +5,7 @@ interface Props {
   className: string;
 }
 
-export default function Login({ className }: Props) {
+export default function Table({ className }: Props) {
   const [open, setopen] = useState(false);
   return (
     <>
