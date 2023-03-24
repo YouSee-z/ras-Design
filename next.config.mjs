@@ -37,6 +37,8 @@ const DwithMDX = withMDX({
   swcMinify: true,
 });
 
+export default DwithMDX;
+
 const nextConfig = {
   webpack(config, options) {
     config.module.rules.forEach((rule) => {
@@ -61,9 +63,9 @@ const nextConfig = {
 
 // const path = require('path')
 
-module.exports = {
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
-}
-module.exports = withLess(nextConfig);
+// module.exports = {
+//   sassOptions: {
+//     includePaths: [path.join(__dirname, 'styles')],
+//   },
+// }
+// module.exports = withLess(nextConfig);
