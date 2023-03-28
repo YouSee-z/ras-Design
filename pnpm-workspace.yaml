@@ -1,2 +1,13 @@
 packages:
   - "packages/*"
+
+utils:
+  - "utils/*"
+
+
+components:
+  - "components/*"
+
+
+types:
+  - "types/*"
