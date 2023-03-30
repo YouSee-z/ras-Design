@@ -7,10 +7,6 @@ type ComputeRange<
   : ComputeRange<N, [...Result, Result["length"]]>;
 type Index40 = ComputeRange<40>[number];
 
-export type PartialKeys<T, K extends keyof T> = Omit<T, K> &
-  Partial<Pick<T, K>>;
-export type RequiredKeys<T, K extends keyof T> = Omit<T, K> &
-  Required<Pick<T, K>>;
 
 // memo
 export function memo<TDeps extends readonly any[], TResult>(

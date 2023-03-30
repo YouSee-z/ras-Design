@@ -1,3 +1,5 @@
+
+
 export const Visibility: TableFeature = {
   getInitialState: (state): VisibilityTableState => {
     return {

@@ -7,6 +7,7 @@ import { CoreRow } from "./row";
 export * from "./cell.d";
 export * from "./table";
 export * from "./row";
+
 // export * from
 
 export interface Row<TData extends RowData>

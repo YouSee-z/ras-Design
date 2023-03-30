@@ -80,3 +80,4 @@ export interface TableOptions<TData extends RowData>
     TableOptionsResolved<TData>,
     "state" | "onStateChange" | "renderFallbackValue"
   > {}
+

@@ -1,5 +1,22 @@
 import { RowData, TableOptionsResolved, Table } from "../type/index.d";
 
+
+
+const features = [
+    Headers,
+    Visibility,
+    Ordering,
+    Pinning,
+    Filters,
+    Sorting,
+    Grouping,
+    Expanding,
+    Pagination,
+    RowSelection,
+    ColumnSizing,
+  ] as const
+  
+
 export function createTable<TData extends RowData>(
   options: TableOptionsResolved<TData>
 ): Table<TData> {
