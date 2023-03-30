@@ -18,3 +18,7 @@ export interface CoreCell<TData extends RowData, TValue> {
   column: Column<TData, TValue>;
   getContext: () => CellContext<TData, TValue>;
 }
+
+export interface Cell<TData extends RowData, TValue>
+  extends CoreCell<TData, TValue>,
+    GroupingCell {}

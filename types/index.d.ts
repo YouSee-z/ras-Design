@@ -7,3 +7,10 @@ export type IsTuple<T> = T extends readonly any[] & { length: infer Length }
     ? T
     : never
   : never;
+
+export type Updater<T> = T | ((old: T) => T);
+
+export type PartialKeys<T, K extends keyof T> = Omit<T, K> &
+  Partial<Pick<T, K>>;
+export type RequiredKeys<T, K extends keyof T> = Omit<T, K> &
+  Required<Pick<T, K>>;

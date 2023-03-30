@@ -1,4 +1,5 @@
-import { RowData, Cell, Column, Row, Table } from "./index.d";
+import { RowData, Row } from "./index.d";
+import { Cell } from "./cell";
 export interface CoreRow<TData extends RowData> {
   id: string;
   index: number;

@@ -1,12 +1,12 @@
 export type RowData = unknown | object | any[];
 import { CellContext, CoreCell } from "./cell.d";
-import { CoreInstance } from "./table.d";
+import { CoreInstance } from "./table";
 import { Getter } from "@rasDesign/types";
-import { CoreRow } from "./row.d";
+import { CoreRow } from "./row";
 
 export * from "./cell.d";
-export * from "./table.d";
-export * from "./row.d";
+export * from "./table";
+export * from "./row";
 // export * from
 
 export interface Row<TData extends RowData>
@@ -17,6 +17,8 @@ export interface Row<TData extends RowData>
     GroupingRow,
     RowSelectionRow,
     ExpandedRow {}
+
+//
 
 export interface Table<TData extends RowData>
   extends CoreInstance<TData>,
@@ -31,10 +33,6 @@ export interface Table<TData extends RowData>
     ExpandedInstance<TData>,
     PaginationInstance<TData>,
     RowSelectionInstance<TData> {}
-
-export interface Cell<TData extends RowData, TValue>
-  extends CoreCell<TData, TValue>,
-    GroupingCell {}
 
 //  Column  []
 export interface Column<TData extends RowData, TValue = unknown>
@@ -56,3 +54,34 @@ export { Getter };
 //
 
 // export type Getter<TValue> = <TTValue = TValue>() => NoInfer<TTValue>;
+
+export interface TableState
+  extends CoreTableState,
+    VisibilityTableState,
+    ColumnOrderTableState,
+    ColumnPinningTableState,
+    FiltersTableState,
+    SortingTableState,
+    ExpandedTableState,
+    GroupingTableState,
+    ColumnSizingTableState,
+    PaginationTableState,
+    RowSelectionTableState {}
+
+interface CompleteInitialTableState
+  extends CoreTableState,
+    VisibilityTableState,
+    ColumnOrderTableState,
+    ColumnPinningTableState,
+    FiltersTableState,
+    SortingTableState,
+    ExpandedTableState,
+    GroupingTableState,
+    ColumnSizingTableState,
+    PaginationInitialTableState,
+    RowSelectionTableState {}
+
+export type AccessorFn<TData extends RowData, TValue = unknown> = (
+  originalRow: TData,
+  index: number
+) => TValue;
