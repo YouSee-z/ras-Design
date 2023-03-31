@@ -1,21 +1,26 @@
-import { RowData, TableOptionsResolved, Table } from "../type/index.d";
-
-
+import {
+  RowData,
+  TableOptionsResolved,
+  Table,
+  CoreTableState,
+  TableState,
+} from "../type/index.d";
+import { Visibility, Ordering, Pinning } from "../features";
+import { functionalUpdate } from "../util";
 
 const features = [
-    Headers,
-    Visibility,
-    Ordering,
-    Pinning,
-    Filters,
-    Sorting,
-    Grouping,
-    Expanding,
-    Pagination,
-    RowSelection,
-    ColumnSizing,
-  ] as const
-  
+  Headers,
+  Visibility,
+  Ordering,
+  Pinning,
+  Filters,
+  Sorting,
+  Grouping,
+  Expanding,
+  Pagination,
+  RowSelection,
+  ColumnSizing,
+] as const;
 
 export function createTable<TData extends RowData>(
   options: TableOptionsResolved<TData>

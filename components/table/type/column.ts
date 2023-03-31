@@ -1,4 +1,30 @@
-import { RowData, AccessorFn } from "./index.d";
+import {
+  RowData,
+  AccessorFn,
+  IdIdentifier,
+  StringHeaderIdentifier,
+} from "./index.d";
+import { VisibilityColumn } from "./visibility";
+
+export interface ColumnDefBase<TData extends RowData, TValue = unknown>
+  extends ColumnDefExtensions<TData, TValue> {
+  getUniqueValues?: AccessorFn<TData, unknown[]>;
+  footer?: ColumnDefTemplate<HeaderContext<TData, TValue>>;
+  cell?: ColumnDefTemplate<CellContext<TData, TValue>>;
+  meta?: ColumnMeta<TData, TValue>;
+}
+
+type ColumnIdentifiers<TData extends RowData, TValue> =
+  | IdIdentifier<TData, TValue>
+  | StringHeaderIdentifier;
+
+//
+
+export interface ColumnOrderTableState {
+  columnOrder: ColumnOrderState;
+}
+
+export type ColumnOrderState = string[];
 
 export type DisplayColumnDef<
   TData extends RowData,
@@ -24,6 +50,21 @@ export type AccessorFnColumnDef<
   TData extends RowData,
   TValue = unknown
 > = AccessorFnColumnDefBase<TData, TValue> & ColumnIdentifiers<TData, TValue>;
+
+export type ColumnPinningPosition = false | "left" | "right"; // 位置
+
+export interface ColumnPinningState {
+  left?: string[];
+  right?: string[];
+}
+
+export interface ColumnPinningTableState {
+  columnPinning: ColumnPinningState;
+}
+
+export interface ColumnPinningTableState {
+  columnPinning: ColumnPinningState;
+}
 
 interface AccessorKeyColumnDefBase<TData extends RowData, TValue = unknown>
   extends ColumnDefBase<TData, TValue> {
@@ -68,7 +109,7 @@ export interface CoreColumn<TData extends RowData, TValue> {
 
 export interface Column<TData extends RowData, TValue = unknown>
   extends CoreColumn<TData, TValue>,
-    ColumnVisibilityColumn,
+    VisibilityColumn,
     ColumnPinningColumn,
     FiltersColumn<TData>,
     SortingColumn<TData>,

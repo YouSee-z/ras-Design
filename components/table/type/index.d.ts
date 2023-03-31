@@ -7,6 +7,26 @@ import { CoreRow } from "./row";
 export * from "./cell.d";
 export * from "./table";
 export * from "./row";
+export * from "./visibility";
+export * from "./column";
+export * from "./options";
+
+export interface TableMeta<TData extends RowData> {}
+
+export interface ColumnMeta<TData extends RowData, TValue> {}
+
+export interface FilterMeta {}
+
+export interface FilterFns {}
+
+export interface SortingFns {}
+
+export interface AggregationFns {}
+
+export type Updater<T> = T | ((old: T) => T);
+export type OnChangeFn<T> = (updaterOrValue: Updater<T>) => void;
+
+export type AnyRender = (Comp: any, props: any) => any;
 
 // export * from
 
@@ -20,6 +40,7 @@ export interface Row<TData extends RowData>
     ExpandedRow {}
 
 //
+export type OnChangeFn<T> = (updaterOrValue: Updater<T>) => void;
 
 export interface Table<TData extends RowData>
   extends CoreInstance<TData>,
@@ -86,3 +107,27 @@ export type AccessorFn<TData extends RowData, TValue = unknown> = (
   originalRow: TData,
   index: number
 ) => TValue;
+
+export interface StringHeaderIdentifier {
+  header: string;
+  id?: string;
+}
+
+export interface IdIdentifier<TData extends RowData, TValue> {
+  id: string;
+  header?: StringOrTemplateHeader<TData, TValue>;
+}
+
+// export const filterFns = {
+//   includesString,
+//   includesStringSensitive,
+//   equalsString,
+//   arrIncludes,
+//   arrIncludesAll,
+//   arrIncludesSome,
+//   equals,
+//   weakEquals,
+//   inNumberRange,
+// }
+
+// export type BuiltInFilterFn = keyof typeof filterFns

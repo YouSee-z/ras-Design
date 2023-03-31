@@ -19,3 +19,9 @@ export interface CoreRow<TData extends RowData> {
   getParentRow: () => Row<TData> | undefined;
   getParentRows: () => Row<TData>[];
 }
+
+export interface RowModel<TData extends RowData> {
+  rows: Row<TData>[]
+  flatRows: Row<TData>[]
+  rowsById: Record<string, Row<TData>>
+}

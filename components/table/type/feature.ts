@@ -1,3 +1,5 @@
+import { RowData } from "./index.d";
+
 interface FeatureOptions<TData extends RowData>
   extends VisibilityOptions,
     ColumnOrderOptions,

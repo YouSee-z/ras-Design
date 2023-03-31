@@ -1,5 +1,4 @@
-
-
+import { TableFeature } from "../type";
 export const Visibility: TableFeature = {
   getInitialState: (state): VisibilityTableState => {
     return {
