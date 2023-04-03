@@ -1,4 +1,10 @@
-import { TableFeature } from "../type";
+import {
+  TableFeature,
+  VisibilityTableState,
+  RowData,
+  Table,
+  VisibilityDefaultOptions,
+} from "../type";
 export const Visibility: TableFeature = {
   getInitialState: (state): VisibilityTableState => {
     return {

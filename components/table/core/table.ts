@@ -4,7 +4,7 @@ import {
   Table,
   CoreTableState,
   TableState,
-} from "../type/index.d";
+} from "../type";
 import { Visibility, Ordering, Pinning } from "../features";
 import { functionalUpdate } from "../util";
 

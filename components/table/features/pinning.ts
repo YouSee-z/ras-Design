@@ -3,7 +3,10 @@ import {
   TableFeature,
   ColumnPinningTableState,
   ColumnPinningState,
+  Table,
+  ColumnPinningDefaultOptions
 } from "../type";
+import {makeStateUpdater} from "../util"
 
 const getDefaultPinningState = (): ColumnPinningState => ({
   left: [],

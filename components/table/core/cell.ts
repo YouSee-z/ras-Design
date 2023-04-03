@@ -1,4 +1,4 @@
-import { RowData, Cell, Column, Row, Table, CoreCell } from "../type/index.d";
+import { RowData, Cell, Column, Row, Table, CoreCell } from "../type";
 import { memo } from "@rasDesign/utils";
 // import
 

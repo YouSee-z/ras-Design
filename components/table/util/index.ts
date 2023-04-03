@@ -31,3 +31,6 @@ type AnyFunction = (...args: any) => any;
 export function isFunction<T extends AnyFunction>(d: any): d is T {
   return d instanceof Function;
 }
+
+
+

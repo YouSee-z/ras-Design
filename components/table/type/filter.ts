@@ -95,13 +95,7 @@ export interface FiltersColumn<TData extends RowData> {
   _getFacetedMinMaxValues?: () => undefined | [number, number];
 }
 
-export interface SortingInstance<TData extends RowData> {
-  setSorting: (updater: Updater<SortingState>) => void;
-  resetSorting: (defaultState?: boolean) => void;
-  getPreSortedRowModel: () => RowModel<TData>;
-  getSortedRowModel: () => RowModel<TData>;
-  _getSortedRowModel?: () => RowModel<TData>;
-}
+
 
 //
 

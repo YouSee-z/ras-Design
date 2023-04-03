@@ -50,7 +50,6 @@ const basic: SortingFn<any> = (rowA, rowB, columnId) => {
   return compareBasic(rowA.getValue(columnId), rowB.getValue(columnId));
 };
 
-// Utils
 
 function compareBasic(a: any, b: any) {
   return a === b ? 0 : a > b ? 1 : -1;

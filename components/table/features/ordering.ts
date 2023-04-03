@@ -4,7 +4,7 @@ import {
   RowData,
   Table,
   ColumnOrderDefaultOptions
-} from "../type/index.d";
+} from "../type";
 
 export const Ordering: TableFeature = {
   getInitialState: (state): ColumnOrderTableState => {

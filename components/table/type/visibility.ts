@@ -1,7 +1,7 @@
 import { RowData, OnChangeFn } from ".";
 import { Column } from "./column";
 import { Updater } from "@rasDesign/types";
-import { Cell } from "./cell.d";
+import { Cell } from "./cell";
 
 export type VisibilityState = Record<string, boolean>;
 
