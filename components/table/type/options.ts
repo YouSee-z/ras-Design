@@ -1,9 +1,37 @@
-import { RowData, OnChangeFn, Table, Column } from "./index.d";
-import { ColumnOrderState, ColumnPinningState } from "./column";
-import { RowModel } from "./row";
-import { ColumnFiltersState, FilterFnOption } from "./filter";
+import {
+  RowData,
+  Row,
+  RowModel,
+  Table,
+  TableState,
+  TableOptions,
+  Column,
+  ColumnDef,
+  SortingOptionsBase,
+  ColumnOrderState,
+  ColumnPinningState,
+  ColumnFiltersState,
+  ColumnResizeMode,
+  FilterFnOption,
+  ResolvedFilterFns,
+  VisibilityState,
+  InitialTableState,
+  OnChangeFn,
+  ResolvedSortingFns,
+  TableMeta,
+  GroupingOptionsBase,
+  ResolvedAggregationFns,
+  ExpandedState,
+  ColumnSizingState,
+  ColumnSizingInfoState,
+  PaginationState,
+  RowSelectionState,
+} from ".";
 
-export type VisibilityState = Record<string, boolean>;
+import { Updater } from "@rasDesign/types";
+// import {AggregationFns} from "../features/"
+
+// export type VisibilityState = Record<string, boolean>;
 export interface VisibilityOptions {
   onColumnVisibilityChange?: OnChangeFn<VisibilityState>;
   enableHiding?: boolean;
@@ -54,6 +82,62 @@ interface FiltersOptionsBase<TData extends RowData> {
   ) => () => undefined | [number, number];
 }
 
+export interface FiltersOptions<TData extends RowData>
+  extends FiltersOptionsBase<TData>,
+    ResolvedFilterFns {}
+
+export interface SortingOptions<TData extends RowData>
+  extends SortingOptionsBase,
+    ResolvedSortingFns {}
+
+export interface GroupingOptions
+  extends GroupingOptionsBase,
+    ResolvedAggregationFns {}
+
+export interface ExpandedOptions<TData extends RowData> {
+  manualExpanding?: boolean;
+  onExpandedChange?: OnChangeFn<ExpandedState>;
+  autoResetExpanded?: boolean;
+  enableExpanding?: boolean;
+  getExpandedRowModel?: (table: Table<any>) => () => RowModel<any>;
+  getIsRowExpanded?: (row: Row<TData>) => boolean;
+  getRowCanExpand?: (row: Row<TData>) => boolean;
+  paginateExpandedRows?: boolean;
+}
+
+export interface ColumnSizingOptions {
+  enableColumnResizing?: boolean;
+  columnResizeMode?: ColumnResizeMode;
+  onColumnSizingChange?: OnChangeFn<ColumnSizingState>;
+  onColumnSizingInfoChange?: OnChangeFn<ColumnSizingInfoState>;
+}
+
+export interface PaginationOptions {
+  pageCount?: number;
+  manualPagination?: boolean;
+  onPaginationChange?: OnChangeFn<PaginationState>;
+  autoResetPageIndex?: boolean;
+  getPaginationRowModel?: (table: Table<any>) => () => RowModel<any>;
+}
+
+export interface RowSelectionOptions<TData extends RowData> {
+  enableRowSelection?: boolean | ((row: Row<TData>) => boolean);
+  enableMultiRowSelection?: boolean | ((row: Row<TData>) => boolean);
+  enableSubRowSelection?: boolean | ((row: Row<TData>) => boolean);
+  onRowSelectionChange?: OnChangeFn<RowSelectionState>;
+  // enableGroupingRowSelection?:
+  //   | boolean
+  //   | ((
+  //       row: Row<TData>
+  //     ) => boolean)
+  // isAdditiveSelectEvent?: (e: unknown) => boolean
+  // isInclusiveSelectEvent?: (e: unknown) => boolean
+  // selectRowsFn?: (
+  //   table: Table<TData>,
+  //   rowModel: RowModel<TData>
+  // ) => RowModel<TData>
+}
+
 export interface FeatureOptions<TData extends RowData>
   extends VisibilityOptions,
     ColumnOrderOptions,
@@ -68,4 +152,28 @@ export interface FeatureOptions<TData extends RowData>
 
 export interface VisibilityDefaultOptions {
   onColumnVisibilityChange: OnChangeFn<VisibilityState>;
+}
+
+export interface CoreOptions<TData extends RowData> {
+  data: TData[];
+  state: Partial<TableState>;
+  onStateChange: (updater: Updater<TableState>) => void;
+  debugAll?: boolean;
+  debugTable?: boolean;
+  debugHeaders?: boolean;
+  debugColumns?: boolean;
+  debugRows?: boolean;
+  initialState?: InitialTableState;
+  autoResetAll?: boolean;
+  mergeOptions?: (
+    defaultOptions: TableOptions<TData>,
+    options: Partial<TableOptions<TData>>
+  ) => TableOptions<TData>;
+  meta?: TableMeta<TData>;
+  getCoreRowModel: (table: Table<any>) => () => RowModel<any>;
+  getSubRows?: (originalRow: TData, index: number) => undefined | TData[];
+  getRowId?: (originalRow: TData, index: number, parent?: Row<TData>) => string;
+  columns: ColumnDef<TData, any>[];
+  defaultColumn?: Partial<ColumnDef<TData, unknown>>;
+  renderFallbackValue: any;
 }

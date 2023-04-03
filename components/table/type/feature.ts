@@ -1,4 +1,16 @@
-import { RowData } from "./index.d";
+import {
+  RowData,
+  VisibilityOptions,
+  ColumnOrderOptions,
+  ColumnPinningOptions,
+  FiltersOptions,
+  SortingOptions,
+  GroupingOptions,
+  ColumnSizingOptions,
+  ExpandedOptions,
+  PaginationOptions,
+  RowSelectionOptions,
+} from ".";
 
 interface FeatureOptions<TData extends RowData>
   extends VisibilityOptions,

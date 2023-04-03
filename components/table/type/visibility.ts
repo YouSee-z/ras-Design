@@ -1,4 +1,4 @@
-import { RowData, OnChangeFn } from "./index.d";
+import { RowData, OnChangeFn } from ".";
 import { Column } from "./column";
 import { Updater } from "@rasDesign/types";
 import { Cell } from "./cell.d";
@@ -7,9 +7,6 @@ export type VisibilityState = Record<string, boolean>;
 
 export interface VisibilityTableState {
   columnVisibility: VisibilityState;
-}
-export interface VisibilityDefaultOptions {
-  onColumnVisibilityChange: OnChangeFn<VisibilityState>;
 }
 
 export interface VisibilityInstance<TData extends RowData> {

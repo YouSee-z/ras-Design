@@ -1,4 +1,15 @@
-import { RowData, Cell, Column, Row, Table, Getter } from "./index.d";
+import {
+  RowData,
+  TableState,
+  InitialTableState,
+  Row,
+  Table,
+  TableOptions,
+  TableMeta,
+  RowModel,
+  ColumnDef,
+} from ".";
+import { Updater } from "@rasDesign/types";
 export interface CoreOptions<TData extends RowData> {
   data: TData[];
   state: Partial<TableState>;
@@ -22,5 +33,3 @@ export interface CoreOptions<TData extends RowData> {
   defaultColumn?: Partial<ColumnDef<TData, unknown>>;
   renderFallbackValue: any;
 }
-
-

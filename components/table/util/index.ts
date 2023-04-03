@@ -2,7 +2,9 @@ import { TableState } from "../type";
 
 import { Updater } from "@rasDesign/types";
 
-export * from "./filterfn";
+export * from "./filterfns";
+export * from "./sortingfns";
+export * from "./aggregationFn";
 
 export function functionalUpdate<T>(updater: Updater<T>, input: T): T {
   return typeof updater === "function"
@@ -22,4 +24,10 @@ export function makeStateUpdater<K extends keyof TableState>(
       };
     });
   };
+}
+
+type AnyFunction = (...args: any) => any;
+
+export function isFunction<T extends AnyFunction>(d: any): d is T {
+  return d instanceof Function;
 }

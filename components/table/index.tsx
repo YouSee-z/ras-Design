@@ -1,5 +1,5 @@
 import React from "react";
-import { RowData, TableOptions, TableOptionsResolved } from "./type/index.d";
+import { RowData, TableOptions, TableOptionsResolved } from "./type";
 
 export type Renderable<TProps> = React.ReactNode | React.ComponentType<TProps>;
 
@@ -80,5 +80,3 @@ export function useReactTable<TData extends RowData>(
 
   return tableRef.current;
 }
-
-

@@ -1,3 +1,6 @@
+import { RowData, Row, OnChangeFn, SortingFns, Table, RowModel } from ".";
+import { BuiltInSortingFn } from "../util";
+import { Updater } from "@rasDesign/types";
 export type SortDirection = "asc" | "desc";
 
 export interface ColumnSort {
@@ -26,15 +29,6 @@ export type SortingFnOption<TData extends RowData> =
   | BuiltInSortingFn
   | SortingFn<TData>;
 
-export interface SortingColumnDef<TData extends RowData> {
-  sortingFn?: SortingFnOption<TData>;
-  sortDescFirst?: boolean;
-  enableSorting?: boolean;
-  enableMultiSort?: boolean;
-  invertSorting?: boolean;
-  sortUndefined?: false | -1 | 1;
-}
-
 export interface SortingColumn<TData extends RowData> {
   getAutoSortingFn: () => SortingFn<TData>;
   getAutoSortDir: () => SortDirection;
@@ -50,7 +44,16 @@ export interface SortingColumn<TData extends RowData> {
   getToggleSortingHandler: () => undefined | ((event: unknown) => void);
 }
 
-interface SortingOptionsBase {
+export interface SortingColumnDef<TData extends RowData> {
+  sortingFn?: SortingFnOption<TData>;
+  sortDescFirst?: boolean;
+  enableSorting?: boolean;
+  enableMultiSort?: boolean;
+  invertSorting?: boolean;
+  sortUndefined?: false | -1 | 1;
+}
+
+export interface SortingOptionsBase {
   manualSorting?: boolean;
   onSortingChange?: OnChangeFn<SortingState>;
   enableSorting?: boolean;
@@ -63,10 +66,18 @@ interface SortingOptionsBase {
   isMultiSortEvent?: (e: unknown) => boolean;
 }
 
-type ResolvedSortingFns = keyof SortingFns extends never
+export type ResolvedSortingFns = keyof SortingFns extends never
   ? {
       sortingFns?: Record<string, SortingFn<any>>;
     }
   : {
       sortingFns: Record<keyof SortingFns, SortingFn<any>>;
     };
+
+export interface SortingInstance<TData extends RowData> {
+  setSorting: (updater: Updater<SortingState>) => void;
+  resetSorting: (defaultState?: boolean) => void;
+  getPreSortedRowModel: () => RowModel<TData>;
+  getSortedRowModel: () => RowModel<TData>;
+  _getSortedRowModel?: () => RowModel<TData>;
+}

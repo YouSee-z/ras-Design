@@ -1,5 +1,22 @@
-import { RowData, Row } from "./index.d";
-import { Cell } from "./cell";
+import {
+  Cell,
+  RowData,
+  VisibilityRow,
+  ColumnPinningRow,
+  FiltersRow,
+  GroupingRow,
+  ExpandedRow,
+} from ".";
+
+import { Updater } from "@rasDesign/types";
+export interface Row<TData extends RowData>
+  extends CoreRow<TData>,
+    VisibilityRow<TData>,
+    ColumnPinningRow<TData>,
+    FiltersRow<TData>,
+    GroupingRow,
+    RowSelectionRow,
+    ExpandedRow {}
 export interface CoreRow<TData extends RowData> {
   id: string;
   index: number;
@@ -20,8 +37,42 @@ export interface CoreRow<TData extends RowData> {
   getParentRows: () => Row<TData>[];
 }
 
+export interface RowSelectionRow {
+  getIsSelected: () => boolean;
+  getIsSomeSelected: () => boolean;
+  getIsAllSubRowsSelected: () => boolean;
+  getCanSelect: () => boolean;
+  getCanMultiSelect: () => boolean;
+  getCanSelectSubRows: () => boolean;
+  toggleSelected: (value?: boolean) => void;
+  getToggleSelectedHandler: () => (event: unknown) => void;
+}
+
 export interface RowModel<TData extends RowData> {
-  rows: Row<TData>[]
-  flatRows: Row<TData>[]
-  rowsById: Record<string, Row<TData>>
+  rows: Row<TData>[];
+  flatRows: Row<TData>[];
+  rowsById: Record<string, Row<TData>>;
+}
+
+export type RowSelectionState = Record<string, boolean>;
+
+export interface RowSelectionTableState {
+  rowSelection: RowSelectionState;
+}
+
+export interface RowSelectionInstance<TData extends RowData> {
+  getToggleAllRowsSelectedHandler: () => (event: unknown) => void;
+  getToggleAllPageRowsSelectedHandler: () => (event: unknown) => void;
+  setRowSelection: (updater: Updater<RowSelectionState>) => void;
+  resetRowSelection: (defaultState?: boolean) => void;
+  getIsAllRowsSelected: () => boolean;
+  getIsAllPageRowsSelected: () => boolean;
+  getIsSomeRowsSelected: () => boolean;
+  getIsSomePageRowsSelected: () => boolean;
+  toggleAllRowsSelected: (value?: boolean) => void;
+  toggleAllPageRowsSelected: (value?: boolean) => void;
+  getPreSelectedRowModel: () => RowModel<TData>;
+  getSelectedRowModel: () => RowModel<TData>;
+  getFilteredSelectedRowModel: () => RowModel<TData>;
+  getGroupedSelectedRowModel: () => RowModel<TData>;
 }

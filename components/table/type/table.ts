@@ -1,22 +1,64 @@
-import { RowData, Cell, Column, Row, Table, ColumnDef } from "./index.d";
+import {
+  RowData,
+  Column,
+  Row,
+  ColumnDef,
+  FeatureOptions,
+  CoreOptions,
+  RowModel,
+  VisibilityTableState,
+  ColumnOrderTableState,
+  ColumnPinningTableState,
+  FiltersTableState,
+  SortingTableState,
+  ExpandedTableState,
+  GroupingTableState,
+  ColumnSizingTableState,
+  PaginationTableState,
+  RowSelectionTableState,
+  PaginationInitialTableState,
+  HeadersInstance,
+  VisibilityInstance,
+  ColumnOrderInstance,
+  ColumnPinningInstance,
+  FiltersInstance,
+  SortingInstance,
+  GroupingInstance,
+  ColumnSizingInstance,
+  ExpandedInstance,
+  PaginationInstance,
+  RowSelectionInstance,
+} from ".";
 import { RequiredKeys, PartialKeys, Updater } from "@rasDesign/types";
-import { CoreOptions } from "./core";
-import { RowModel } from "./row";
-// import {Cell}
 
 export interface CoreTableState {}
 
-export interface TableState extends CoreTableState {}
-// VisibilityTableState,
-// ColumnOrderTableState,
-// ColumnPinningTableState,
-// FiltersTableState,
-// SortingTableState,
-// ExpandedTableState,
-// GroupingTableState,
-// ColumnSizingTableState,
-// PaginationTableState,
-// RowSelectionTableState {}
+export interface Table<TData extends RowData>
+  extends CoreInstance<TData>,
+    HeadersInstance<TData>,
+    VisibilityInstance<TData>,
+    ColumnOrderInstance<TData>,
+    ColumnPinningInstance<TData>,
+    FiltersInstance<TData>,
+    SortingInstance<TData>,
+    GroupingInstance<TData>,
+    ColumnSizingInstance,
+    ExpandedInstance<TData>,
+    PaginationInstance<TData>,
+    RowSelectionInstance<TData> {}
+
+export interface TableState
+  extends CoreTableState,
+    VisibilityTableState,
+    ColumnOrderTableState,
+    ColumnPinningTableState,
+    FiltersTableState,
+    SortingTableState,
+    ExpandedTableState,
+    GroupingTableState,
+    ColumnSizingTableState,
+    PaginationTableState,
+    RowSelectionTableState {}
 
 export type TableOptionsResolved<TData extends RowData> = CoreOptions<TData> &
   FeatureOptions<TData>;
@@ -61,17 +103,18 @@ export interface CoreInstance<TData extends RowData> {
   getColumn: (columnId: string) => Column<TData, unknown> | undefined;
 }
 
-export interface CompleteInitialTableState extends CoreTableState {}
-// VisibilityTableState,
-// ColumnOrderTableState,
-// ColumnPinningTableState,
-// FiltersTableState,
-// SortingTableState,
-// ExpandedTableState,
-// GroupingTableState,
-// ColumnSizingTableState,
-// PaginationInitialTableState,
-// RowSelectionTableState {}
+export interface CompleteInitialTableState
+  extends CoreTableState,
+    VisibilityTableState,
+    ColumnOrderTableState,
+    ColumnPinningTableState,
+    FiltersTableState,
+    SortingTableState,
+    ExpandedTableState,
+    GroupingTableState,
+    ColumnSizingTableState,
+    PaginationInitialTableState,
+    RowSelectionTableState {}
 
 export interface InitialTableState extends Partial<CompleteInitialTableState> {}
 
@@ -80,4 +123,3 @@ export interface TableOptions<TData extends RowData>
     TableOptionsResolved<TData>,
     "state" | "onStateChange" | "renderFallbackValue"
   > {}
-
