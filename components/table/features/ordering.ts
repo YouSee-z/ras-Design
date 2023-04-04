@@ -1,10 +1,15 @@
 import {
+  Column,
   TableFeature,
   ColumnOrderTableState,
   RowData,
   Table,
-  ColumnOrderDefaultOptions
+  ColumnOrderDefaultOptions,
+  ColumnOrderInstance,
 } from "../type";
+import { makeStateUpdater } from "../util";
+import { memo } from "@rasDesign/utils";
+import { orderColumns } from "./grouping";
 
 export const Ordering: TableFeature = {
   getInitialState: (state): ColumnOrderTableState => {

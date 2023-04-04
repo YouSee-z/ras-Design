@@ -1,6 +1,7 @@
 export type RowData = unknown | object | any[];
 import { ColumnDefTemplate } from "./column";
 import { HeaderContext } from "./header";
+import { DeepKeys, DeepValue } from "@rasDesign/types";
 
 export * from "./cell";
 export * from "./header";
@@ -37,6 +38,10 @@ import {
   ColumnOrderTableState,
   ColumnPinningTableState,
   ColumnSizingTableState,
+  DisplayColumnDef,
+  ColumnDefBase,
+  ColumnDef,
+  GroupColumnDef,
 } from "./column";
 import { FiltersTableState } from "./filter";
 import { SortingTableState } from "./sorting";
@@ -77,3 +82,27 @@ export interface IdIdentifier<TData extends RowData, TValue> {
   id: string;
   header?: StringOrTemplateHeader<TData, TValue>;
 }
+
+export interface IdentifiedColumnDef<TData extends RowData, TValue = unknown>
+  extends ColumnDefBase<TData, TValue> {
+  id?: string;
+  header?: StringOrTemplateHeader<TData, TValue>;
+}
+
+export type ColumnHelper<TData extends RowData> = {
+  accessor: <
+    TAccessor extends AccessorFn<TData> | DeepKeys<TData>,
+    TValue extends TAccessor extends AccessorFn<TData, infer TReturn>
+      ? TReturn
+      : TAccessor extends DeepKeys<TData>
+      ? DeepValue<TData, TAccessor>
+      : never
+  >(
+    accessor: TAccessor,
+    column: TAccessor extends AccessorFn<TData>
+      ? DisplayColumnDef<TData, TValue>
+      : IdentifiedColumnDef<TData, TValue>
+  ) => ColumnDef<TData, TValue>;
+  display: (column: DisplayColumnDef<TData>) => ColumnDef<TData, unknown>;
+  group: (column: GroupColumnDef<TData>) => ColumnDef<TData, unknown>;
+};

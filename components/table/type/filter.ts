@@ -1,6 +1,6 @@
 import { RowData, Row, Column, FilterFns, RowModel, SortingState } from ".";
 import { BuiltInFilterFn } from "../util";
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 
 export interface FilterMeta {}
 

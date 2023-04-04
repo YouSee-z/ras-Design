@@ -28,7 +28,7 @@ import {
   RowSelectionState,
 } from ".";
 
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 // import {AggregationFns} from "../features/"
 
 // export type VisibilityState = Record<string, boolean>;
@@ -137,6 +137,15 @@ export interface RowSelectionOptions<TData extends RowData> {
   //   rowModel: RowModel<TData>
   // ) => RowModel<TData>
 }
+
+
+
+export interface ColumnSizingDefaultOptions {
+  columnResizeMode: ColumnResizeMode
+  onColumnSizingChange: OnChangeFn<ColumnSizingState>
+  onColumnSizingInfoChange: OnChangeFn<ColumnSizingInfoState>
+}
+
 
 export interface FeatureOptions<TData extends RowData>
   extends VisibilityOptions,

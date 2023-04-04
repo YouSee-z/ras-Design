@@ -7,7 +7,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrismPlus from "rehype-prism-plus";
 import nextMDX from "@next/mdx";
-const withLess = require("next-with-less");
 const path = require("node:path");
 
 const withMDX = nextMDX({
@@ -54,18 +53,3 @@ const nextConfig = {
   },
 };
 
-// const useLess = withLess(nextConfig);
-
-// export { DwithMDX, useLess };
-
-// // module.exports =
-// // });
-
-// const path = require('path')
-
-// module.exports = {
-//   sassOptions: {
-//     includePaths: [path.join(__dirname, 'styles')],
-//   },
-// }
-// module.exports = withLess(nextConfig);

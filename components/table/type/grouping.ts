@@ -9,7 +9,7 @@ import {
 } from "./index";
 import { ColumnDefTemplate } from "./column";
 import { BuiltInAggregationFn } from "../util";
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 
 export type GroupingState = string[];
 

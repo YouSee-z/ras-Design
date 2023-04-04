@@ -1,5 +1,12 @@
+export * from "./core";
+export * from "./features";
+export * from "./util";
+export * from "./index";
+export * from "./type";
+
 import React from "react";
 import { RowData, TableOptions, TableOptionsResolved } from "./type";
+import { createTable } from "./index";
 
 export type Renderable<TProps> = React.ReactNode | React.ComponentType<TProps>;
 

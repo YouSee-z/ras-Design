@@ -1,6 +1,6 @@
 import { RowData, Row, OnChangeFn, SortingFns, Table, RowModel } from ".";
 import { BuiltInSortingFn } from "../util";
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 export type SortDirection = "asc" | "desc";
 
 export interface ColumnSort {

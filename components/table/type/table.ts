@@ -29,7 +29,7 @@ import {
   PaginationInstance,
   RowSelectionInstance,
 } from ".";
-import { RequiredKeys, PartialKeys, Updater } from "@rasDesign/types";
+import { RequiredKeys, PartialKeys, Updater } from "types";
 
 export interface CoreTableState {}
 

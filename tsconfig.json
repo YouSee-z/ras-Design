@@ -4,7 +4,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@rasDesign/login": ["packages/login/src"],
-      "@rasDesign/table": ["components/table/src"],
+      "@rasDesign/table": ["components/table/index.ts"],
       "@rasDesign/button": ["packages/button/src"],
       "@rasDesign/user-select": ["packages/user-select/src"],
       "@rasDesign/utils": ["utils/index"],
@@ -27,6 +27,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*d.ts"],
   "exclude": ["node_modules"]
 }

@@ -15,11 +15,12 @@ import {
   SortingColumn,
   GroupingColumn,
 } from "./index";
-import { UnionToIntersection, Updater } from "@rasDesign/types";
+import { UnionToIntersection, Updater } from "types";
 
 export type ColumnSizingState = Record<string, number>;
 export type ColumnResizeMode = "onChange" | "onEnd";
 export interface ColumnMeta<TData extends RowData, TValue> {}
+export type GroupingColumnMode = false | 'reorder' | 'remove'
 
 export interface Column<TData extends RowData, TValue = unknown>
   extends CoreColumn<TData, TValue>,
@@ -127,10 +128,6 @@ export interface ColumnSizingHeader {
 export interface ColumnPinningState {
   left?: string[];
   right?: string[];
-}
-
-export interface ColumnPinningTableState {
-  columnPinning: ColumnPinningState;
 }
 
 export interface ColumnPinningTableState {

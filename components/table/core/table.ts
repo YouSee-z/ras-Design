@@ -4,9 +4,30 @@ import {
   Table,
   CoreTableState,
   TableState,
+  CoreInstance,
+  Updater,
+  Row,
+  ColumnDef,
+  ColumnDefResolved,
+  Column,
+  GroupColumnDef,
 } from "../type";
-import { Visibility, Ordering, Pinning } from "../features";
+import {
+  Visibility,
+  Ordering,
+  Pinning,
+  Filters,
+  Sorting,
+  Grouping,
+  ColumnSizing,
+  RowSelection,
+  Expanding,
+  Pagination,
+} from "../features";
 import { functionalUpdate } from "../util";
+import { RequiredKeys } from "types";
+import { memo } from "@rasDesign/utils";
+import { createColumn } from "./column";
 
 const features = [
   Headers,

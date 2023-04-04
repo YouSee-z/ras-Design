@@ -8,7 +8,7 @@ import {
   ExpandedRow,
 } from ".";
 
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 export interface Row<TData extends RowData>
   extends CoreRow<TData>,
     VisibilityRow<TData>,

@@ -1,6 +1,6 @@
-import { TableState } from "../type";
+import { TableState, RowData, ColumnHelper, ColumnDef } from "../type";
 
-import { Updater } from "@rasDesign/types";
+import { Updater, DeepKeys } from "@rasDesign/types";
 
 export * from "./filterfns";
 export * from "./sortingfns";
@@ -32,5 +32,22 @@ export function isFunction<T extends AnyFunction>(d: any): d is T {
   return d instanceof Function;
 }
 
-
-
+export function createColumnHelper<
+  TData extends RowData
+>(): ColumnHelper<TData> {
+  return {
+    accessor: (accessor, column) => {
+      return typeof accessor === "function"
+        ? ({
+            ...column,
+            accessorFn: accessor,
+          } as any)
+        : {
+            ...column,
+            accessorKey: accessor,
+          };
+    },
+    display: (column) => column as ColumnDef<TData, unknown>,
+    group: (column) => column as ColumnDef<TData, unknown>,
+  };
+}
