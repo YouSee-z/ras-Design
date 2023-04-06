@@ -13,7 +13,7 @@
       "table/examples": ["components/table/src/index"]
     },
 
-    "target": "es5",
+    "target": "es2016",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -28,6 +28,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*d.ts", "store"],
   "exclude": ["node_modules"]
 }
