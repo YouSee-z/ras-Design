@@ -8,3 +8,4 @@ export * from "./expanding";
 export * from "./columnsizing";
 export * from "./rowselection";
 export * from "./pagination";
+export * from "./headers";

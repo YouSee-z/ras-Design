@@ -1,4 +1,3 @@
-// Remark packages
 import remarkGfm from "remark-gfm";
 import remarkFootnotes from "remark-footnotes";
 import remarkMath from "remark-math";
@@ -7,7 +6,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrismPlus from "rehype-prism-plus";
 import nextMDX from "@next/mdx";
-const path = require("node:path");
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
@@ -30,26 +28,8 @@ const withMDX = nextMDX({
   },
 });
 
-const DwithMDX = withMDX({
+export default withMDX({
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   reactStrictMode: true,
   swcMinify: true,
 });
-
-export default DwithMDX;
-
-const nextConfig = {
-  webpack(config, options) {
-    config.module.rules.forEach((rule) => {
-      const { oneOf } = rule;
-      if (oneOf) {
-        oneOf.forEach((one) => {
-          if (!`${one.issuer?.and}`.includes("_app")) return;
-          one.issuer.and = [path.resolve(__dirname)];
-        });
-      }
-    });
-    return config;
-  },
-};
-

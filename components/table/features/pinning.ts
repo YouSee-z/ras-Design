@@ -1,10 +1,17 @@
+import { memo } from "@rasDesign/utils";
 import {
   RowData,
   TableFeature,
   ColumnPinningTableState,
   ColumnPinningState,
   Table,
-  ColumnPinningDefaultOptions
+  ColumnPinningDefaultOptions,
+  Column,
+  ColumnPinningColumn,
+  Row,
+  ColumnPinningRow,
+  Cell,
+  ColumnPinningInstance
 } from "../type";
 import {makeStateUpdater} from "../util"
 

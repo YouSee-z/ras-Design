@@ -286,8 +286,8 @@ export const Filters: TableFeature = {
       },
 
       _getGlobalFacetedRowModel:
-        table.options.getFacetedRowModel &&
-        table.options.getFacetedRowModel(table, "__global__"),
+        table.options?.getFacetedRowModel &&
+        table.options?.getFacetedRowModel(table, "__global__"),
 
       getGlobalFacetedRowModel: () => {
         if (table.options.manualFiltering || !table._getGlobalFacetedRowModel) {

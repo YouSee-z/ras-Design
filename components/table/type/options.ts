@@ -186,3 +186,7 @@ export interface CoreOptions<TData extends RowData> {
   defaultColumn?: Partial<ColumnDef<TData, unknown>>;
   renderFallbackValue: any;
 }
+
+export interface ColumnPinningDefaultOptions {
+  onColumnPinningChange: OnChangeFn<ColumnPinningState>
+}

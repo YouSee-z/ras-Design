@@ -1,10 +1,17 @@
+import { memo } from "@rasDesign/utils";
 import {
   TableFeature,
   VisibilityTableState,
   RowData,
   Table,
   VisibilityDefaultOptions,
+  Column,
+  VisibilityColumn,
+  Row,
+  VisibilityRow,
+  VisibilityInstance,
 } from "../type";
+import { makeStateUpdater } from "../util";
 export const Visibility: TableFeature = {
   getInitialState: (state): VisibilityTableState => {
     return {

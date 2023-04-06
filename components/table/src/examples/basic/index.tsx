@@ -1,7 +1,5 @@
 import * as React from "react";
-import ReactDOM from "react-dom/client";
-
-import "./index.css";
+import "./index.module.css";
 
 import {
   createColumnHelper,
@@ -78,7 +76,7 @@ const columns = [
   }),
 ];
 
-function App() {
+export function BasicTable() {
   const [data, setData] = React.useState(() => [...defaultData]);
   const rerender = React.useReducer(() => ({}), {})[1];
 
@@ -87,32 +85,24 @@ function App() {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
   return (
     <div className="p-2">
       <table>
         <thead>
-          {table
-            .getHeaderGroups()
-            .map(
-              (headerGroup: {
-                id: React.Key | null | undefined;
-                headers: any[];
-              }) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <th key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </th>
-                  ))}
-                </tr>
-              )
-            )}
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </th>
+              ))}
+            </tr>
+          ))}
         </thead>
         <tbody>
           {table
@@ -167,12 +157,4 @@ function App() {
   );
 }
 
-export default App;
-// const rootElement = document.getElementById('root')
-// if (!rootElement) throw new Error('Failed to find the root element')
-
-// ReactDOM.createRoot(rootElement).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// )
+export default BasicTable;

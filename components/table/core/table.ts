@@ -23,6 +23,7 @@ import {
   RowSelection,
   Expanding,
   Pagination,
+  Headers,
 } from "../features";
 import { functionalUpdate } from "../util";
 import { RequiredKeys } from "types";
@@ -53,7 +54,7 @@ export function createTable<TData extends RowData>(
   let table = { _features: features } as unknown as Table<TData>;
 
   const defaultOptions = table._features.reduce((obj, feature) => {
-    return Object.assign(obj, feature.getDefaultOptions?.(table));
+    return Object.assign(obj, feature?.getDefaultOptions?.(table));
   }, {}) as TableOptionsResolved<TData>;
 
   const mergeOptions = (options: TableOptionsResolved<TData>) => {
@@ -75,7 +76,7 @@ export function createTable<TData extends RowData>(
   } as TableState;
 
   table._features.forEach((feature) => {
-    initialState = feature.getInitialState?.(initialState) ?? initialState;
+    initialState = feature?.getInitialState?.(initialState) ?? initialState;
   });
 
   const queued: (() => void)[] = [];
@@ -195,7 +196,7 @@ export function createTable<TData extends RowData>(
       }
     ),
 
-    _getColumnDefs: () => table.options.columns,
+    _getColumnDefs: () => table.options?.columns,
 
     getAllColumns: memo(
       () => [table._getColumnDefs()],
@@ -207,7 +208,7 @@ export function createTable<TData extends RowData>(
         ): Column<TData, unknown>[] => {
           return columnDefs.map((columnDef) => {
             const column = createColumn(table, columnDef, depth, parent);
-
+            //  console.log(column,"weqweqweqecolumn")
             const groupingColumnDef = columnDef as GroupColumnDef<
               TData,
               unknown
@@ -280,11 +281,10 @@ export function createTable<TData extends RowData>(
       return column;
     },
   };
-
+  // console.log(coreInstance._getColumnDefs());
   Object.assign(table, coreInstance);
-
   table._features.forEach((feature) => {
-    return Object.assign(table, feature.createTable?.(table));
+    return Object.assign(table, feature?.createTable?.(table));
   });
 
   return table;

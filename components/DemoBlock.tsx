@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const DemoBlock = ({ children }: any) => {
   const [visible, setVisible] = useState(false);
-  console.log(children);
+  
 
   return (
     <div className="demo-block">

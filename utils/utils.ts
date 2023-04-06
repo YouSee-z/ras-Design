@@ -7,7 +7,6 @@ type ComputeRange<
   : ComputeRange<N, [...Result, Result["length"]]>;
 type Index40 = ComputeRange<40>[number];
 
-
 // memo
 export function memo<TDeps extends readonly any[], TResult>(
   getDeps: () => [...TDeps],
@@ -24,13 +23,12 @@ export function memo<TDeps extends readonly any[], TResult>(
   return () => {
     let depTime: number;
     if (options.key && options.debug) depTime = Date.now();
-
+    //table.options?.columns
     const newDeps = getDeps();
 
     const depsChanged =
       newDeps.length !== deps.length ||
       newDeps.some((dep: any, index: number) => deps[index] !== dep);
-
     if (!depsChanged) {
       return result!;
     }
@@ -75,4 +73,3 @@ export function memo<TDeps extends readonly any[], TResult>(
     return result!;
   };
 }
-

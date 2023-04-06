@@ -59,7 +59,6 @@ export function useReactTable<TData extends RowData>(
     renderFallbackValue: null,
     ...options,
   };
-
   // Create a new table and store it in state
   const [tableRef] = React.useState(() => ({
     current: createTable<TData>(resolvedOptions),
@@ -70,6 +69,7 @@ export function useReactTable<TData extends RowData>(
 
   // Compose the default state above with any user state. This will allow the user
   // to only control a subset of the state if desired.
+
   tableRef.current.setOptions((prev) => ({
     ...prev,
     ...options,

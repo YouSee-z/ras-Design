@@ -5,6 +5,7 @@ import { Updater } from "@rasDesign/types";
 export * from "./filterfns";
 export * from "./sortingfns";
 export * from "./aggregationFn";
+export * from "./getcorerowmodel";
 
 export function functionalUpdate<T>(updater: Updater<T>, input: T): T {
   return typeof updater === "function"
@@ -50,4 +51,25 @@ export function createColumnHelper<
     display: (column) => column as ColumnDef<TData, unknown>,
     group: (column) => column as ColumnDef<TData, unknown>,
   };
+}
+
+export function flattenBy<TNode>(
+  arr: TNode[],
+  getChildren: (item: TNode) => TNode[]
+) {
+  const flat: TNode[] = [];
+
+  const recurse = (subArr: TNode[]) => {
+    subArr.forEach((item) => {
+      flat.push(item);
+      const children = getChildren(item);
+      if (children?.length) {
+        recurse(children);
+      }
+    });
+  };
+
+  recurse(arr);
+
+  return flat;
 }
