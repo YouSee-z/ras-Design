@@ -20,7 +20,7 @@ import {
   BuiltInFilterFn,
   functionalUpdate,
 } from "../util";
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 
 export const Filters: TableFeature = {
   getDefaultColumnDef: <TData extends RowData>(): FiltersColumnDef<TData> => {

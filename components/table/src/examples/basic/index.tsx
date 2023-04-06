@@ -8,7 +8,7 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-} from "@rasDesign/table";
+} from "components/table";
 
 type Person = {
   firstName: string;

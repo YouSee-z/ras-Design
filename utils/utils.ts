@@ -1,4 +1,4 @@
-import { NoInfer } from "@rasDesign/types";
+import { NoInfer } from "types";
 type ComputeRange<
   N extends number,
   Result extends Array<unknown> = []

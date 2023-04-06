@@ -1,5 +1,5 @@
 import { RowData, RowModel } from "./index";
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 
 
 

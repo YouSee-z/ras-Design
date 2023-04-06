@@ -1,5 +1,5 @@
 import { RowData, Column, Row, Table } from ".";
-import { Getter } from "@rasDesign/types";
+import { Getter } from "types";
 
 export interface CellContext<TData extends RowData, TValue> {
   table: Table<TData>;

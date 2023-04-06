@@ -1,4 +1,4 @@
-import { Updater } from "@rasDesign/types";
+import { Updater } from "types";
 import { OnChangeFn, Table, RowModel, RowData } from "./index";
 
 export interface PaginationState {

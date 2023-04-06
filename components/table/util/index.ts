@@ -1,6 +1,6 @@
 import { TableState, RowData, ColumnHelper, ColumnDef } from "../type";
 
-import { Updater, DeepKeys } from "@rasDesign/types";
+import { Updater } from "@rasDesign/types";
 
 export * from "./filterfns";
 export * from "./sortingfns";

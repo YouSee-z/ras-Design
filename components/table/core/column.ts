@@ -1,4 +1,13 @@
-import { RowData, Table, ColumnDef, Column, ColumnDefResolved } from "../type";
+import { memo } from "@rasDesign/utils";
+import {
+  RowData,
+  Table,
+  ColumnDef,
+  Column,
+  ColumnDefResolved,
+  AccessorFn,
+  CoreColumn
+} from "../type";
 
 export function createColumn<TData extends RowData, TValue>(
   table: Table<TData>,
